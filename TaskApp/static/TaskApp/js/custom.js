@@ -3,13 +3,8 @@ let maxTentativa = 3; // Fora da função getDados para manter o estado
 
 async function getDados(uri, parametros = {}, tentativas = maxTentativa) {
   const requestURL = url + `/${uri}`;
-
   try {
     const response = await axios.get(requestURL, {
-      headers: {
-        'X-CSRF-TOKEN': csrfToken,
-        'X-Requested-With': 'XMLHttpRequest',
-      },
       params: parametros
     });
     return response.data;
@@ -30,14 +25,12 @@ async function getDados(uri, parametros = {}, tentativas = maxTentativa) {
 
 async function PostDados(uri, parametros = {}) {
 
-
-  const csrfToken = document.getElementById('tokenID').getAttribute('content');
   const requestURL = url + `/${uri}`;
 
   try {
     const response = await axios.post(requestURL, parametros, {
       headers: {
-        'X-CSRF-TOKEN': csrfToken,
+        'X-CSRFToken': csrfToken,
         'X-Requested-With': 'XMLHttpRequest',
         'Content-Type': 'application/json',
       }
