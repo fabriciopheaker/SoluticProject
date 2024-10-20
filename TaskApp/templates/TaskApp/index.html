@@ -1,0 +1,96 @@
+    {% include 'TaskApp/partials/header.html' %}
+
+
+    {% include 'TaskApp/partials/sidebar.html' %}
+
+
+
+    {% comment %} INICIO BODY{% endcomment %}
+
+    <div class="wrapper">
+           <div class="content-page">
+            <div class="content">
+                    <div class="container-fluid">
+                        <div class="row my-3">
+                            <div class="col-12">
+                                <div class="page-title-box">
+                                    <div class="page-title-right">
+                                        <ol class="breadcrumb m-0">
+                                            <li class="breadcrumb-item"><a href="">Painel</a></li>
+                                            <li class="breadcrumb-item active">Clientes</li>
+                                        </ol>
+                                    </div>
+                                    <h2 class="page-title">Clientes</h2>
+                                     <div class="d-flex justify-content-end">
+                                        <button type="button" class="btn btn-info" onclick="modalCustomer()" ><i class="mdi mdi-plus me-1"></i> <span>Adicionar</span> </button>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                        {% comment %}  CARD BUSCA  {% endcomment %}
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="card bg-light fundo">
+                                    <div class="card-body">
+                                    <div class="mt-2 mb-5">
+                                        <h3> Buscar Cliente</h3>
+                                    </div>
+
+                                        <div class="row">
+                                            <form>
+                                                <div class="row">
+                                                    <div class="col-12 mb-3">
+                                                        <label class="form-label">Nome</label>
+                                                        <input type="text" id="CLIENTE_BUSCA" class="form-control" placeholder="Exemplo: João Gomes" required>
+                                                    </div>
+
+                                                </div>
+                                                <div class="d-flex justify-content-end">
+                                                    <button class="btn btn-primary" id="PESQUISAR"><i class="mdi mdi-magnify search-icon me-1"></i>Pesquisar</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {% comment %} TABLE {% endcomment %}
+                        <div class="row">
+                            <div class="col-xl-12">
+                                <div class="card"  id="cardTable">
+                                    <div class="card-body">
+                                        <table class="table dt-responsive nowrap w-100"  id="TableCustomers">
+                                            <thead>
+                                                <tr>
+                                                    <th>ID</th>
+                                                    <th>NOME</th>
+                                                    <th>ENDEREÇO</th>
+                                                    <th>TELEFONE</th>
+                                                    <th>EMAIL</th>
+                                                    <th>OPÇÕES</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+            </div>
+        </div>
+    </div>
+
+
+    
+    {% include 'TaskApp/components/ModalComponent.html' %}
+    {% include 'TaskApp/partials/footer.html' %}
+
+
+    {% comment %} FIM BODY{% endcomment %}

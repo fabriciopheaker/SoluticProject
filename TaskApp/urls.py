@@ -1,8 +1,10 @@
 from django.contrib import admin
 from django.urls import path
-import TaskApp.views
+import TaskApp.views as taskapp
 
 urlpatterns = [
 
-    path('rota/', TaskApp.views.home)
-]
+    path('', taskapp.index),
+
+    ]
+
