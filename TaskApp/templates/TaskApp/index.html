@@ -41,15 +41,16 @@
 
                                         <div class="row">
                                             <form>
+                                                <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrfToken }}">
                                                 <div class="row">
                                                     <div class="col-12 mb-3">
                                                         <label class="form-label">Nome</label>
-                                                        <input type="text" id="CLIENTE_BUSCA" class="form-control" placeholder="Exemplo: João Gomes" required>
+                                                        <input type="text" id="CUSTOMER_SEARCH" class="form-control" placeholder="Exemplo: João Gomes" required>
                                                     </div>
 
                                                 </div>
                                                 <div class="d-flex justify-content-end">
-                                                    <button class="btn btn-primary" id="PESQUISAR"><i class="mdi mdi-magnify search-icon me-1"></i>Pesquisar</button>
+                                                    <button class="btn btn-primary" id="SEARCH"><i class="mdi mdi-magnify search-icon me-1"></i>Pesquisar</button>
                                                 </div>
                                             </form>
                                         </div>

@@ -2,9 +2,14 @@ from TaskApp.models.Customers import Customer
 
 class CustomerRepository:
 
-    def getAllCustomers(self):
-        customers = Customer.objects.all().values()
-        return list(customers)
+    def getAllCustomers(self, nameSearch=None):
+        if(nameSearch):
+            customer = Customer.objects.filter(name__icontains=nameSearch)
+        else:
+            customer = Customer.objects.all()
+
+        return list(customer.values('id','name','email','address','phone'))
+
 
 
     def createCustomer(data):

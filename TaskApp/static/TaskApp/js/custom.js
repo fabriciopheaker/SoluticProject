@@ -7,9 +7,10 @@ async function getDados(uri, parametros = {}, tentativas = maxTentativa) {
     const response = await axios.get(requestURL, {
       params: parametros
     });
-    return response.data;
+    return response;
   } catch (error) {
     if (tentativas > 0) {
+      console.log(error)
       const tempoEspera = (maxTentativa - tentativas + 1) * 1000;
       // Tentar novamente chamando a função getDados após o tempo de espera calculado
       await new Promise(resolve => setTimeout(resolve, tempoEspera));
@@ -45,14 +46,14 @@ async function PostDados(uri, parametros = {}) {
 
 
 function statusAlert(response) {
-  if (response.data.status === 'success') {
+  if (response.data.status === 'success' || response.data.status === 200) {
     return Swal.fire({
       title: "Sucesso",
-      text: response.data.message,
-      icon: response.data.status
+      text: response.data.message ? response.data.message : 'Realizado com Sucesso!',
+      icon: response.data.status ? response.data.status : "success"
     });
   }
-  /* Aqui é quando existe multiplos errors */
+
   if (response.data.errors) {
     let errorText = '';
     for (const [key, value] of Object.entries(response.data.errors)) {

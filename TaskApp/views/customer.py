@@ -4,13 +4,28 @@ import json
 
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse , HttpResponse
+from rest_framework.response import Response
 from django.core.exceptions import ValidationError
 from TaskApp.repositories.CustomerRepository import CustomerRepository
+from ..serializers import CustomerSerializer
+
 
 
 def index(request):
-    customers = CustomerRepository.getAllCustomers(request)
-    return JsonResponse(customers, safe=False)
+
+    if request.method == 'GET':
+        try:
+            name = request.GET.get('NAME',None)
+
+            repository = CustomerRepository()
+            customers = repository.getAllCustomers(name)
+
+            return JsonResponse(customers, safe=False)
+        except json.JSONDecodeError:
+            return JsonResponse({"error": "Busca Inválida"}, status=400)
+
+    return JsonResponse({"error": "Método não permitido."}, status=405)
+
 
 
 
@@ -73,7 +88,10 @@ def validator(data):
     if not phone:
         raise ValidationError("O telefone é obrigatório.")
 
-    if not re.match(r"^\+?1?\d{9,15}$", phone):
-        raise ValidationError("O telefone fornecido não é válido.")
-
     return True
+
+# name = request.query_params.get('name')
+# repository = CustomerRepository()
+# customers = repository.getAllCustomers(name)
+# serializer = CustomerSerializer(customers, many=True)
+# return Response(serializer.data)
