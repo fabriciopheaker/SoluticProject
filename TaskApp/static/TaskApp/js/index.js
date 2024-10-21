@@ -176,6 +176,7 @@ function CustomerRecords(dataCustomer) {
 
         $('#TableCustomers').DataTable( {
                   data: dataCustomer,
+                  order: [[ 1, "desc" ]],
                   language: {
 
                     url: 'TaskApp/static/TaskApp/libs/datatables.net/lang/portugues-br.json',

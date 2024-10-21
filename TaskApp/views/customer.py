@@ -7,7 +7,7 @@ from django.http import JsonResponse , HttpResponse
 from rest_framework.response import Response
 from django.core.exceptions import ValidationError
 from TaskApp.repositories.CustomerRepository import CustomerRepository
-from ..serializers import CustomerSerializer
+
 
 
 
